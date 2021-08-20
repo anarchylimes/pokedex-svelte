@@ -12,7 +12,11 @@
     "@sveltejs/kit": "next",
     "prettier": "~2.2.1",
     "prettier-plugin-svelte": "^2.2.0",
-    "svelte": "^3.34.0"
+    "svelte": "^3.34.0",
+    "svelte-preprocess": "^4.7.4"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "sass": "^1.38.0"
+  }
 }
