@@ -34,7 +34,7 @@
 <div id="container">
 	<div id="grid">
 		{#each allPokemonInfo as pokemon}
-			<div class="pokemon {pokemon.name}}">
+			<div class="pokemon {pokemon.name}">
         <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{pokemon.id}.png" alt="{pokemon.name} Artwork" />
 				<p class="pokemon-name">{pokemon.name}</p>
 			</div>
