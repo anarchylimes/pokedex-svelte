@@ -35,7 +35,7 @@
 	<div id="grid">
 		{#each allPokemonInfo as pokemon}
 			<div class="pokemon {pokemon.name}">
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{pokemon.id}.png" alt="{pokemon.name} Artwork" />
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{pokemon.id}.png" alt="{pokemon.name} artwork" class="pokemon-image" />
 				<p class="pokemon-name">{pokemon.name}</p>
 			</div>
 		{/each}
@@ -58,7 +58,7 @@
 
 		.pokemon {
 			background: $white;
-			max-width: 10rem;
+			max-width: 16rem;
 			width: 100%;
 			display: flex;
 			flex-direction: column;
@@ -71,11 +71,16 @@
 		}
 
 		.pokemon-image {
-			height: 8rem;
+			height: 14rem;
 		}
 
 		.pokemon-name {
-			text-transform: capitalize;
+      margin-top: 1.5rem;
+			text-transform: capitalize; 
+      font-family: 'Libre Baskerville', serif;
+      font-style: italic;
+      font-size: 20px;
+      letter-spacing: 1px;
 		}
 	}
 </style>
