@@ -26,7 +26,6 @@
 		}
 
 		pokemonStorage.update(() => [...allPokemonInfo]);
-		console.log(allPokemonInfo);
 	});
 </script>
 
@@ -40,6 +39,7 @@
 			<PokemonCard
 				name={pokemon.name}
 				img={pokemon['sprites']['other']['official-artwork']['front_default']}
+				types={pokemon.types}
 			/>
 		{/each}
 	</div>
