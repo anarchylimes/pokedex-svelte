@@ -1,7 +1,7 @@
 <script>
 	export let name;
 	export let img;
-	export let types = undefined;
+	export let types;
 
 	let pokemonTypes = [];
 
