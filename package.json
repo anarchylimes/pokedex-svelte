@@ -18,7 +18,7 @@
   },
   "type": "module",
   "dependencies": {
-    "colorthief": "^2.3.2",
-    "sass": "^1.38.0"
+    "sass": "^1.38.0",
+    "tachyons": "^4.12.0"
   }
 }
