@@ -37,12 +37,10 @@
   const returnColor = e => {
     if (e.length === 1) {
       return `background: ${colors(e[0])}`
-    } else if (e.length === 2) {
+    } else {
       return `background: linear-gradient(to right, ${colors(e[0])} 50%, ${colors(e[1])} 50%`
     }
   }
-
-console.log(returnColor(pokemonTypes))
 </script>
 
 <article class="pokemon {name}" style="{returnColor(pokemonTypes)}">
