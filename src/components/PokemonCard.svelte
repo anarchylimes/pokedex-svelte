@@ -38,7 +38,7 @@
     if (e.length === 1) {
       return `background: ${colors(e[0])}`
     } else {
-      return `background: linear-gradient(to right, ${colors(e[0])} 50%, ${colors(e[1])} 50%`
+      return `background: linear-gradient(52deg, ${colors(e[0])} 0%, ${colors(e[1])} 100%`
     }
   }
 </script>
@@ -51,28 +51,48 @@
 <style lang="scss">
 	@import '../styles/_settings';
 	.pokemon {
-		max-width: 16rem;
+    position: relative;
+		max-width: 17%;
 		width: 100%;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		margin: 1rem 0.5rem;
+    margin: .75rem;
 		padding: 1rem;
 		border-radius: 8px;
 		box-shadow: rgba(149, 157, 165, 0.2) 0px 4px 12px;
+
+    &::before {
+      display: block;
+      position: absolute;
+      content: '';
+      top: 25%;
+      left: 50%;
+      transform: translate3d(-50%, -25%, 0);
+      height: 7rem;
+      width: 7rem;
+      border-radius: 50%;
+      background: rgba($white, .25);
+      border: 1px solid rgba(#fff, .125);
+      z-index: 0;  
+    }
 	}
 
 	.pokemon-image {
-		height: 14rem;
-	}
+		height: 8rem;
+    z-index: 1;
+  }
 
 	.pokemon-name {
 		margin-top: 1.5rem;
 		text-transform: capitalize;
 		font-family: 'IBM Plex Serif', serif;
 		font-style: italic;
-		font-size: 1.25rem;
+		font-size: 1.125rem;
 		letter-spacing: 1px;
+    padding: .5rem 1rem;
+    background: rgba($white, .75);
+    border-radius: 8px;
 	}
 </style>
