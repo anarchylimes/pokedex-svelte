@@ -53,6 +53,7 @@
 	.pokemon {
     position: relative;
 		max-width: 17%;
+    min-width: 17%;
 		width: 100%;
 		display: flex;
 		flex-direction: column;
