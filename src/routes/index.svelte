@@ -2,18 +2,17 @@
 	import { onMount } from 'svelte';
 	import { pokemonStorage } from './storage';
 	import PokemonCard from '../components/PokemonCard.svelte';
-	import "carbon-components-svelte/css/g10.css";
-	import { Button } from "carbon-components-svelte";
-  import Add16 from "carbon-icons-svelte/lib/Add16";
-
+	import 'carbon-components-svelte/css/g10.css';
+	import { Button } from 'carbon-components-svelte';
+	import Add16 from 'carbon-icons-svelte/lib/Add16';
 
 	const numberOfPokemon = 20;
-	let offset = 0
+	let offset = 0;
 	let allPokemonInfo;
 	let pokemons = [];
 
 	$: {
-		loadPokemon(offset)
+		loadPokemon(offset);
 	}
 
 	pokemonStorage.subscribe((value) => {
@@ -35,9 +34,9 @@
 		pokemonStorage.update(() => [...allPokemonInfo]);
 	}
 
-  function loadMore(event) {
-    offset += numberOfPokemon
-  }
+	function loadMore(event) {
+		offset += numberOfPokemon;
+	}
 </script>
 
 <svelte:head>
@@ -53,12 +52,10 @@
 				types={pokemon.types}
 			/>
 		{/each}
-
 	</div>
-	{#if allPokemonInfo.length > 0} 
-	<Button on:click="{loadMore}" icon={Add16} size="field">Load More</Button>
+	{#if allPokemonInfo.length > 0}
+		<Button on:click={loadMore} icon={Add16} size="field">Load More</Button>
 	{/if}
-
 </div>
 
 <style lang="scss">
