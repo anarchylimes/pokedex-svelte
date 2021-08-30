@@ -2,6 +2,7 @@
 	export let name;
 	export let img;
 	export let types;
+  export let id;
 
 	let pokemonTypes = [];
 
@@ -42,58 +43,25 @@
     }
   }
 </script>
-
-<article class="pokemon {name}" style="{returnColor(pokemonTypes)}">
+<a class="pokemon-container md:w-auto rounded-lg shadow-lg" href="../pokemon/{id}">
+<article class="pokemon {name} rounded-lg shadow-inner" style="{returnColor(pokemonTypes)}">
 	<img class="pokemon-image" src={img} alt={name} />
-	<p class="pokemon-name">{name}</p>
+	<p class="pokemon-name font-serif italic text-lg tracking-widest rounded-lg px-4 py-2 mt-5 bg-white bg-opacity-70 border-gray-50 capitalize">{name}</p>
 </article>
+</a>
 
 <style lang="scss">
 	@import '../styles/_settings';
+
 	.pokemon {
-    position: relative;
-		max-width: 17%;
-    min-width: 17%;
-		width: 100%;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-    margin: .75rem;
 		padding: 1rem;
-		border-radius: 8px;
-		box-shadow: rgba(149, 157, 165, 0.2) 0px 4px 12px;
-
-    &::before {
-      display: block;
-      position: absolute;
-      content: '';
-      top: 25%;
-      left: 50%;
-      transform: translate3d(-50%, -25%, 0);
-      height: 7rem;
-      width: 7rem;
-      border-radius: 50%;
-      background: rgba($white, .25);
-      border: 1px solid rgba(#fff, .125);
-      z-index: 0;  
-    }
-	}
+  }
 
 	.pokemon-image {
 		height: 8rem;
-    z-index: 1;
   }
-
-	.pokemon-name {
-		margin-top: 1.5rem;
-		text-transform: capitalize;
-		font-family: 'IBM Plex Serif', serif;
-		font-style: italic;
-		font-size: 1.125rem;
-		letter-spacing: 1px;
-    padding: .5rem 1rem;
-    background: rgba($white, .75);
-    border-radius: 8px;
-	}
 </style>

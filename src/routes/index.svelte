@@ -1,19 +1,15 @@
 <script>
-	import { onMount } from 'svelte';
+	import ky from 'ky';
 	import { pokemonStorage } from './storage';
 	import PokemonCard from '../components/PokemonCard.svelte';
-	import "carbon-components-svelte/css/g10.css";
-	import { Button } from "carbon-components-svelte";
-  import Add16 from "carbon-icons-svelte/lib/Add16";
-
 
 	const numberOfPokemon = 20;
-	let offset = 0
+	let offset = 0;
 	let allPokemonInfo;
 	let pokemons = [];
 
 	$: {
-		loadPokemon(offset)
+		loadPokemon(offset);
 	}
 
 	pokemonStorage.subscribe((value) => {
@@ -22,22 +18,19 @@
 
 	async function loadPokemon() {
 		let baseApi = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${numberOfPokemon}`;
-		const data = await fetch(baseApi);
-		const results = await data.json();
-		pokemons = results.results;
+		const data = await ky.get(baseApi).json();
+		pokemons = data.results;
 
 		for (const pokemon of pokemons) {
-			const pokemonFetchRequest = await fetch(pokemon.url);
-			const singlePokemonInfo = await pokemonFetchRequest.json();
-			pokemonStorage.update((value) => [...value, singlePokemonInfo]);
+			const pokemonFetchRequest = await ky.get(pokemon.url).json();
+			pokemonStorage.update((value) => [...value, pokemonFetchRequest]);
 		}
-
 		pokemonStorage.update(() => [...allPokemonInfo]);
 	}
 
-  function loadMore(event) {
-    offset += numberOfPokemon
-  }
+	function loadMore(event) {
+		offset += numberOfPokemon;
+	}
 </script>
 
 <svelte:head>
@@ -45,51 +38,48 @@
 </svelte:head>
 
 <div id="container">
-	<div id="grid">
-		{#each allPokemonInfo as pokemon}
-			<PokemonCard
-				name={pokemon.name}
-				img={pokemon['sprites']['other']['official-artwork']['front_default']}
-				types={pokemon.types}
-			/>
-		{/each}
+	<div class="inner-container">
+		<div class="grid grid-cols-5 gap-8">
+			{#each allPokemonInfo as pokemon}
+				<PokemonCard
+					name={pokemon.name}
+					img={pokemon['sprites']['other']['official-artwork']['front_default']}
+					types={pokemon.types}
+					id={pokemon.id}
+				/>
+			{/each}
+		</div>
 
+		{#if allPokemonInfo.length > 0}
+			<button
+				on:click={loadMore}
+				class="bg-red-500 px-6 py-3 mt-4 mx-auto rounded-lg appearance-none font-mono font-bold text-white cursor-pointer block"
+				>Load More</button
+			>
+		{/if}
 	</div>
-	{#if allPokemonInfo.length > 0} 
-	<Button on:click="{loadMore}" icon={Add16} size="field">Load More</Button>
-	{/if}
-
 </div>
 
 <style lang="scss">
 	@import '../styles/_settings';
 
 	:global {
-		#app {
+		body {
+			min-height: 100vh;
 			background: linear-gradient(to bottom, $light-purple 0%, $light-purple 50%, $light-blue 100%);
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			flex-direction: column;
+			background-repeat: no-repeat;
 		}
 	}
-	#container {
+	.inner-container {
 		background: $white;
-		max-width: 70rem;
+		max-width: 65rem;
+		width: 95%;
 		margin: 3rem auto;
 		border-radius: 8px;
 		padding: 1rem;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-	}
-	#grid {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		align-items: center;
-		flex-wrap: wrap;
-		margin-bottom: 1.5rem;
+		// display: flex;
+		// justify-content: center;
+		// align-items: center;
+		// flex-direction: column;
 	}
 </style>
