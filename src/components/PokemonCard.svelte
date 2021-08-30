@@ -45,8 +45,8 @@
 </script>
 
 <a class="pokemon-container md:w-auto rounded-lg shadow-lg" href="../pokemon/{id}">
-	<article class="pokemon {name} rounded-lg shadow-inner" style={returnColor(pokemonTypes)}>
-		<img class="pokemon-image" src={img} alt={name} />
+	<article class="pokemon {name} rounded-lg shadow-inner flex flex-col justify-center items-center p-4" style={returnColor(pokemonTypes)}>
+		<img class="pokemon-image h-32" src={img} alt={name} />
 		<p
 			class="pokemon-name font-serif italic text-lg tracking-widest rounded-lg px-4 py-2 mt-5 bg-white bg-opacity-70 border-gray-50 capitalize"
 		>
@@ -56,17 +56,6 @@
 </a>
 
 <style lang="scss">
-	@import '../styles/_settings';
 
-	.pokemon {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 1rem;
-	}
 
-	.pokemon-image {
-		height: 8rem;
-	}
 </style>

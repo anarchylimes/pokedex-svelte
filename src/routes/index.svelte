@@ -39,7 +39,7 @@
 </svelte:head>
 
 <div id="container">
-	<div class="inner-container">
+	<div class="inner-container p-4 rounded-lg bg-white w-max my-12 mx-auto">
 		<div class="grid grid-cols-5 gap-8">
 			{#each allPokemonInfo as pokemon}
 				<PokemonCard
@@ -70,17 +70,5 @@
 			background: linear-gradient(to bottom, $light-purple 0%, $light-purple 50%, $light-blue 100%);
 			background-repeat: no-repeat;
 		}
-	}
-	.inner-container {
-		background: $white;
-		max-width: 65rem;
-		width: 95%;
-		margin: 3rem auto;
-		border-radius: 8px;
-		padding: 1rem;
-		// display: flex;
-		// justify-content: center;
-		// align-items: center;
-		// flex-direction: column;
 	}
 </style>
