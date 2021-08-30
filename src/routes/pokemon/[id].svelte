@@ -1,12 +1,12 @@
 <script>
-import { page } from '$app/stores';
+	import { page } from '$app/stores';
 
-  	import { pokemonStorage } from '../storage';
-    const id = $page.params.id
+	import { pokemonStorage } from '../storage';
+	const id = $page.params.id;
 </script>
 
-<style lang="scss">
-  /* your styles go here */
-</style>
+<p>{$pokemonStorage.name}</p>
 
-<p>{$pokemonStorage}</p>
+<style lang="scss">
+	/* your styles go here */
+</style>
