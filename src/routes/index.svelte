@@ -26,7 +26,6 @@
 			pokemonStorage.update((value) => [...value, pokemonFetchRequest]);
 		}
 		pokemonStorage.update(() => [...allPokemonInfo]);
-		console.log(allPokemonInfo)
 	}
 
 	function loadMore(event) {
