@@ -60,14 +60,10 @@
 	</div>
 </div>
 
-<style lang="scss">
-	@import '../styles/_settings';
-
-	:global {
-		body {
-			min-height: 100vh;
-			background: linear-gradient(to bottom, $light-purple 0%, $light-purple 50%, $light-blue 100%);
-			background-repeat: no-repeat;
-		}
+<style>
+	:global(body) {
+		min-height: 100vh;
+		background: linear-gradient(to bottom, #e4ddfd 0%, #e4ddfd 50%, #c8e0ff 100%);
+		background-repeat: no-repeat;
 	}
 </style>

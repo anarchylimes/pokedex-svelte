@@ -5,29 +5,29 @@
 
 	let pokemon;
 
-	export function toTitleCase(string, splitChar) {
-  return string
-    .toLowerCase()
-    .split(splitChar)
-    .map(s => s.charAt(0).toUpperCase() + s.substring(1))
-    .join(' ')
-}
-
 	async function getPokemonData(id) {
 		let baseApi = `https://pokeapi.co/api/v2/pokemon/${id}`;
 		const pokemonGeneral = await ky.get(baseApi).json();
 
 		const { name, types, sprites, stats, abilities, height, weight } = pokemonGeneral;
 
-		const formattedStats = stats.map((stat) => {
+		const pokemonTypes = types.map((type) => {
 			return {
-				name: toTitleCase(stat.stat.name, '-'),
+				name: type.type.name
+			}
+		})
+
+		const returnStats = stats.map((stat) => {
+			return {
+				name: stat.stat.name,
 				base_stat: stat.base_stat
 			};
 		});
 
 		pokemon = {
-			stats: formattedStats
+			name,
+			types: pokemonTypes,
+			stats: returnStats
 		};
 	}
 
@@ -39,6 +39,9 @@
 </style>
 
 {#if pokemon}
+	{#each pokemon.types as type (type.name)}
+		 <p>{type.name}</p>
+	{/each}
 	 {#each pokemon.stats as stat}
 		  <p>{stat.name} - {stat.base_stat}</p>
 	 {/each}
