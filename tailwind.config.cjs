@@ -1,10 +1,17 @@
 const config = {
 	mode: 'jit',
 	purge: ['./src/**/*.{html,js,svelte,ts}'],
+	options: {
+		safelist: [
+			/data-theme$/,
+		]
+	},
 	theme: {
 		extend: {}
 	},
-	plugins: []
+	plugins: [
+		require('daisyui')
+	]
 };
 
 module.exports = config;

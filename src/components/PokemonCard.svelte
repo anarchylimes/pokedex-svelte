@@ -44,15 +44,15 @@
 	};
 </script>
 
-<a class="pokemon-container md:w-auto rounded-lg shadow-lg" href="../pokemon/{id}">
-	<article class="pokemon {name} rounded-lg shadow-inner flex flex-col justify-center items-center p-4" style={returnColor(pokemonTypes)}>
+<a class="pokemon-container rounded-lg shadow-lg col-span-6 sm:col-span-2 xl:col-span-1" href="../pokemon/{id}">
+	<div class="pokemon {name} rounded-lg shadow-inner flex flex-col justify-center items-center p-4" style={returnColor(pokemonTypes)}>
 		<img class="pokemon-image h-32" src={img} alt={name} />
 		<p
 			class="pokemon-name font-serif italic text-lg tracking-widest rounded-lg px-4 py-2 mt-5 bg-white bg-opacity-70 border-gray-50 capitalize"
 		>
 			{name}
 		</p>
-	</article>
+	</div>
 </a>
 
 <style lang="scss">
